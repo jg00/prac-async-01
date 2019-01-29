@@ -1,5 +1,5 @@
 ## Practice async code
-Working on Javascript async examples.
+Practice async examples
 
 ## Technologies
 
