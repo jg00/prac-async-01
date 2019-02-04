@@ -5,19 +5,18 @@
 // Callbacks are not async by default.
 
 function doAsyncTask(cb) {
-  // Using setImmediate()
   setImmediate(() => {
-    console.log("Async task");
+    console.log("Using setImmediate()");
     cb();
   });
 
-  // Or process.nextTick()
-  //   process.nextTick(() => {
-  //     console.log("Async task");
-  //     cb();
-  //   });
+  process.nextTick(() => {
+    console.log("Using process.nextTick()");
+    cb();
+  });
 }
 
 doAsyncTask(_ => console.log(message));
 
+// message defined here intentionally
 let message = "Callback Called";
