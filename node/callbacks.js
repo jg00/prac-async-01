@@ -16,12 +16,12 @@ function doAsyncTask(cb) {
   });
 }
 
-// doAsyncTask(_ => console.log(message));
+doAsyncTask(_ => console.log(message));
 
 // message defined here intentionally
 let message = "Callback Called";
 
-// 2 Handling callback errors and passing the error up the chain
+// 2 Handling callback errors by passing the error up the chain
 const fs = require("fs");
 
 function readFileThenDo(next) {
@@ -31,6 +31,29 @@ function readFileThenDo(next) {
 }
 
 readFileThenDo((err, data) => {
-  if (err) console.error(err);
+  if (err) console.error("Error at readFileThenDo(err, data): \n" + err);
   else console.log(data);
 });
+
+/*
+// 3 try..catch does not work with asynchronous code
+const fs = require("fs");
+
+function readFileThenDo(next) {
+  fs.readFile("./blah.nofile", (err, data) => {
+    if (err) throw err;
+
+    next(null, data);
+  });
+}
+
+try {
+  readFileThenDo(data => {
+    console.log(data);
+  });
+} catch (err) {
+  console.log(
+    "Never runs as this is run immediately before async code above! " + err
+  );
+}
+*/
