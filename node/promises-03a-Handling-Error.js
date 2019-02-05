@@ -1,4 +1,4 @@
-// 3 (Non-nested ersion) Load a file from disk using readFile and then compress it using the
+// 4 (Add .catch error handler, .finally) Load a file from disk using readFile and then compress it using the
 // async zlib node library, use a promise chain to process this work.
 
 const fs = require("fs");
@@ -22,17 +22,14 @@ function readFile(filename, encoding) {
   });
 }
 
-// Load it then zip it and then print it to screen
-readFile("./files/demofile2.txt", "utf-8")
-  .then(
-    data => {
-      return gZip(data);
-    },
-    error => {
-      console.log("1 Failed to read", error);
-    }
-  )
-  .then(zipResult => {
-    if (zipResult) console.log("2 Zip successs", zipResult);
-    else console.log("2 Zip failed");
-  });
+// Load it then zip it and then print it to screen.  Handle error at the end.
+// Errors are propagated.
+readFile("./files/demofile.txt", "utf-8")
+  .then(data => {
+    return gZip(data);
+  })
+  .then(data => {
+    console.log(data);
+  })
+  .catch(error => console.error("Error generic caught:", error))
+  .finally(() => console.log("Finally"));
