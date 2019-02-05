@@ -5,6 +5,7 @@ Promise.resolve("done")
   })
   .then(val => {
     console.log(val);
+    throw "fail2";
   })
   .catch(error => console.error(error))
   .finally(_ => console.log("Cleaning up"));

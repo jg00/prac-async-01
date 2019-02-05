@@ -24,7 +24,7 @@ function readFile(filename, encoding) {
 
 // Load it then zip it and then print it to screen.  Handle error at the end.
 // Errors are propagated.
-readFile("./files/demofile.txt", "utf-8")
+readFile("./files/demofile2.txt", "utf-8")
   .then(data => {
     return gZip(data);
   })
