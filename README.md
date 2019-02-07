@@ -1,5 +1,6 @@
 ## Practice async code
-Practice async examples
+
+Practice async examples. Worked on examples covering callbacks, promises, async/await, generators and event loops.
 
 ## Technologies
 
