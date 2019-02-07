@@ -7,7 +7,7 @@ console.log("called - first");
 
 // 2 Converting above using async/await.
 async function asyncFunction() {
-  let value = await doAsyncTask();
+  let value = await doAsyncTask(); // instead of .then you await the function that returns a promise
   let value2 = await doAsyncTask();
   console.log("val2", value2);
   console.log("val", value); // waits before printed.
